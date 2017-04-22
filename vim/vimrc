@@ -1,0 +1,130 @@
+" Vimrc v1.0 at April 2017 by Alice1017
+
+" ================================
+" Global Variable settings
+" ================================
+
+let g:neocomplcache_enable_at_startup = 1
+let g:lightline = {
+   \    "colorscheme": "wombat",
+   \    "active": {
+   \        "left": [
+   \            ["mode", "paste"],
+   \            ["readonly", "filename", "fugitive", "modified"]
+   \        ]
+   \    },
+   \    "component": {
+   \        'readonly': '%{&filetype=="help"?"":&readonly?"?":""}',
+   \        'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+   \        'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+   \    },
+   \    'component_visible_condition': {
+   \        'readonly': '(&filetype!="help"&& &readonly)',
+   \        'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+   \        'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+   \    }
+   \}
+
+
+" ================================
+" General settings
+" ================================
+
+" Appearance
+syntax on
+set number
+set nowrap
+"  行番号をハイライト
+set cursorline
+"  検索結果をハイライト
+set hlsearch
+"  Lightlineを表示する
+set laststatus=2
+"  256色表示
+set t_Co=256
+
+" Indent, Tab, etc
+set tabstop=4
+set shiftwidth=4
+set autoindent
+set expandtab
+
+" Encoding
+if has("mac") || has("unix")
+    set encoding=utf-8
+    set termencoding=utf-8
+    set fileencodings=utf-8
+
+" Theme
+colorscheme lucario
+
+" Highlight ZenkakuSpace
+highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
+match ZenkakuSpace /　/
+
+" Another
+"  Vimのコピーをclipboardに
+set clipboard=unnamed
+
+
+" ================================
+" Associate File Types
+" ================================
+
+augroup associate_filetypes
+	autocmd!
+	autocmd BufNewFile,BufRead *.md set filetype=markdown
+	autocmd BufNewFile,BufRead *.less set filetype=less
+    autocmd BufNewFile,BufRead *.scss set filetype=scss.css
+    autocmd BufNewFile,BufRead *.jinja2 set filetype=jinja
+augroup END
+
+
+" ================================
+" Register funcs to the file
+" ================================
+
+augroup register_functions
+    autocmd BufWritePost *.py call Flake8()
+augroup END
+
+
+" ================================
+" Vundle plugin settings
+" ================================
+
+set nocompatible
+filetype off
+set rtp+=$HOME/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" Plugin - vundle
+Plugin 'VundleVim/Vundle.vim'
+
+" Plugin - supplement
+Plugin 'Shougo/neocomplcache'
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/vimshell'
+Plugin 'Shougo/vimproc'
+Plugin 'itchyny/lightline.vim'
+Plugin 'scrooloose/nerdtree'
+
+" Plugin - theme
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'raphamorim/lucario'
+
+" Plugin - syntax
+Plugin 'jtratner/vim-flavored-markdown'
+Plugin 'Glench/Vim-Jinja2-Syntax'
+Plugin 'suan/vim-instant-markdown'
+
+" Plugin - feature
+Plugin 'mattn/mkdpreview-vim'
+"Plugin 'yuratomo/w3m.vim'
+Plugin 'nvie/vim-flake8'
+Plugin 'bronson/vim-trailing-whitespace'
+Plugin 'mattn/emmet-vim'
+Plugin 'tpope/vim-fugitive'
+
+call vundle#end()
+filetype plugin indent on
