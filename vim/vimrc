@@ -1,7 +1,7 @@
 " Vimrc v1.0 at April 2017 by Alice1017
 
 " ================================
-" Global Variable settings
+" Global Variables
 " ================================
 
 let g:neocomplcache_enable_at_startup = 1
