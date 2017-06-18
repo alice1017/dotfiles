@@ -106,6 +106,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugin - supplement
 Plugin 'Shougo/neocomplcache'
 Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
 Plugin 'Shougo/vimshell'
 Plugin 'Shougo/vimproc'
 Plugin 'itchyny/lightline.vim'
@@ -119,6 +120,7 @@ Plugin 'raphamorim/lucario'
 Plugin 'jtratner/vim-flavored-markdown'
 Plugin 'Glench/Vim-Jinja2-Syntax'
 Plugin 'suan/vim-instant-markdown'
+Plugin 'vim-scripts/JavaScript-Indent'
 
 " Plugin - feature
 Plugin 'mattn/mkdpreview-vim'
