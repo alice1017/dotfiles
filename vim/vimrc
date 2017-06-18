@@ -42,6 +42,8 @@ set hlsearch
 set laststatus=2
 "  256色表示
 set t_Co=256
+" 対応する括弧をハイライト
+set showmatch
 
 " Indent, Tab, etc
 set tabstop=4
