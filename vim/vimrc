@@ -44,6 +44,8 @@ set laststatus=2
 set t_Co=256
 " 対応する括弧をハイライト
 set showmatch
+" マルチバイトに対応
+set ambiwidth=double
 
 " Indent, Tab, etc
 set tabstop=4
