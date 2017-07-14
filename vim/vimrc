@@ -124,6 +124,7 @@ Plugin 'jtratner/vim-flavored-markdown'
 Plugin 'Glench/Vim-Jinja2-Syntax'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'vim-scripts/JavaScript-Indent'
+Plugin 'hynek/vim-python-pep8-indent'
 
 " Plugin - feature
 Plugin 'mattn/mkdpreview-vim'
