@@ -1,4 +1,4 @@
-set -gx EDITOR "/usr/bin/vim"
+set -gx EDITOR (which vim)
 set -gx SHELL "fish"
 set -gx GREP_OPTIONS "--color=auto"
 set -gx TERM "xterm-256color"
