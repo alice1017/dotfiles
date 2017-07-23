@@ -32,11 +32,6 @@
     log-check = log --oneline --stat -n 5
     log-graph = log --graph --decorate=full
 
-[pager]
-    log = diff-highlight | lv -c
-    show = diff-highlight | lv -c
-    diff = diff-highlight | lv -c
-
 [core]
     pager = lv -c
     quotepath = false
