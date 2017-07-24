@@ -34,6 +34,8 @@ let g:lightline = {
 syntax on
 set number
 set nowrap
+"  fishでエラーが出ないために
+set shell=/bin/bash
 "  行番号をハイライト
 set cursorline
 "  検索結果をハイライト
