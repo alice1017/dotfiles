@@ -5,5 +5,12 @@
 ```
 $ git clone https://github.com/alice1017/dotfiles ~/dotfiles
 $ cd ~/dotfiles
-$ make
+$ make install
+```
+
+## clean
+
+```
+$ cd ~/dotfiles
+$ make clean
 ```
