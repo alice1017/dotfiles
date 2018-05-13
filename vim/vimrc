@@ -63,7 +63,8 @@ if has("mac") || has("unix")
 endif
 
 " Theme
-colorscheme lucario
+" colorscheme lucario
+colorscheme iceberg
 
 " Highlight ZenkakuSpace
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
@@ -120,6 +121,7 @@ Plugin 'scrooloose/nerdtree'
 " Plugin - theme
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'raphamorim/lucario'
+Plugin 'cocopon/iceberg.vim'
 
 " Plugin - syntax
 Plugin 'jtratner/vim-flavored-markdown'
