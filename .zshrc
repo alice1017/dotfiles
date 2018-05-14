@@ -33,7 +33,7 @@ export EDITOR="vim"
 export SHELL="/bin/zsh"
 export TERM="xterm-256color"
 export LANG="ja_JP.UTF-8"
-export ZDIR="$HOME/dotfiles/zsh"
+export ZDIR="$HOME/dotfiles/.zsh"
 
 # Variables
 export sessions=$HOME/.tmux/sessions
