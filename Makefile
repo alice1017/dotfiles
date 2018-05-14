@@ -51,9 +51,17 @@ update: banner ## Fetch changes for dotfiles repository
 	@echo ''
 
 deploy: banner  ## Create the symbolic links to home directory
+	# symlink
 	@printf $(ARROW)
 	@echo ' Start to deploy the dotfiles to home directory'
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
+
+	# vim bundle
+	@printf $(ARROW)
+	@echo ' Clone VundleVim/Vundle.vim repository to ~/.vim/bundle'
+	@mkdir -p ~/.vim/bundle
+	@git clone https://github.com/VundleVim/Vundle.vim.git \
+		~/.vim/bundle/Vundle.vim
 	@echo ''
 
 install: banner update deploy ## Run `make deploy` after `make update`
