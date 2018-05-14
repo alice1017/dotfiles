@@ -62,10 +62,6 @@ if has("mac") || has("unix")
     set fileencodings=utf-8
 endif
 
-" Theme
-" colorscheme lucario
-colorscheme iceberg
-
 " Highlight ZenkakuSpace
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 match ZenkakuSpace /　/
@@ -161,4 +157,12 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 " For conceal markers.
 if has('conceal')
   set conceallevel=2 concealcursor=niv
+endif
+
+" ================================
+" Load vimrc.local
+" ================================
+
+if filereadable(expand("~/.vimrc.local"))
+    source ~/.vimrc.local
 endif

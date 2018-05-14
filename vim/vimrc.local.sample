@@ -1,0 +1,9 @@
+" Vimrc for local
+" If you use this local vimrc, please run following command.
+" cp ~/dotfiles/vim/vimrc.local.sample ~/.vimrc.local
+
+" Theme
+colorscheme lucario
+" colorscheme iceberg
+
+
