@@ -29,6 +29,7 @@
     cm = commit
     df = diff
     cat = cat-file
+    log-one = log --oneline
     log-check = log --oneline --stat -n 5
     log-graph = log --graph --decorate=full
 
