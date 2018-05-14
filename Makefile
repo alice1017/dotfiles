@@ -41,6 +41,9 @@ banner:
 	@echo 'Copyright (c) 2018 Alice1017 All Rights Reserved'
 	@echo ''
 
+list: ## Show dot files in this repo
+	@$(foreach val, $(DOTFILES), /bin/ls -dF $(val);)
+
 update: banner ## Fetch changes for dotfiles repository
 	@printf $(ARROW)
 	@echo ' Fetch changes in dotfiles repository'
