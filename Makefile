@@ -44,12 +44,14 @@ banner:
 update: banner ## Fetch changes for dotfiles repository
 	@printf $(ARROW)
 	@echo ' Fetch changes in dotfiles repository'
-	git pull origin master
+	@git pull origin master
+	@echo ''
 
 deploy: banner  ## Create the symbolic links to home directory
 	@printf $(ARROW)
 	@echo ' Start to deploy the dotfiles to home directory'
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
+	@echo ''
 
 install: banner update deploy ## Run `make deploy` after `make update`
 	@exec $$SHELL
@@ -58,6 +60,7 @@ clean: banner ## Remove the symbolic links from the home directory
 	@printf $(ARROW)
 	@echo ' Remove the symbolic links from home directory'
 	@-$(foreach val, $(DOTFILES), rm -vrf $(HOME)/$(val);)
+	@echo ''
 
 help: banner ## Self-documented Makefile
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
