@@ -56,15 +56,10 @@ deploy: banner  ## Create the symbolic links to home directory
 	@echo ' Start to deploy the dotfiles to home directory'
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 
-	# vim bundle
-	@printf $(ARROW)
-	@echo ' Clone VundleVim/Vundle.vim repository to ~/.vim/bundle'
-	@mkdir -p ~/.vim/bundle
-	@git clone https://github.com/VundleVim/Vundle.vim.git \
-		~/.vim/bundle/Vundle.vim
-	@echo ''
+init: banner ## Execute init shell script
+	@bash init.sh
 
-install: banner update deploy ## Run `make deploy` after `make update`
+install: banner update deploy init ## Run update, deploy, init
 	@exec $$SHELL
 
 clean: banner ## Remove the symbolic links from the home directory
