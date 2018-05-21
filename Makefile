@@ -51,7 +51,6 @@ update: banner ## Fetch changes for dotfiles repository
 	@echo ''
 
 deploy: banner  ## Create the symbolic links to home directory
-	# symlink
 	@printf $(ARROW)
 	@echo ' Start to deploy the dotfiles to home directory'
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
