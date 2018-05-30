@@ -91,3 +91,8 @@ source $ZDIR/prompt.zsh
 
 # ANOTHER SECTION
 source $ZDIR/another.zsh
+
+# Local setting
+if [ -e "$HOME/.zshrc.local" ];then
+    source ~/.zshrc.local
+fi
