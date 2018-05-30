@@ -43,17 +43,17 @@ SUCCESS="\033[1;34m[ SUCCESS ] Dotfile initialization was successful\033[0m\n"
 
 # 1. Copy vimrc.local.sample
 log "Copy 'vimrc.local.sample' -> '~/.vimrc.local'"
-cp vimrc.local.sample ~/.vimrc.local
+cp -v vimrc.local.sample ~/.vimrc.local
 check_exit_code $?
 
 # 2. Copy zshrc.local.sample
 log "Copy 'zshrc.local.sample' -> '~/.zshrc.local'"
-cp zshrc.local.sample ~/.zshrc.local
+cp -v zshrc.local.sample ~/.zshrc.local
 check_exit_code $?
 
 # 3. Clone vundlevim
 log "Clone VundleVim/Vundle.vim repository to ~/.vim/bundle"
-mkdir -p ~/.vim/bundle
+mkdir -v -p ~/.vim/bundle
 $CLONE https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 check_exit_code $?
 
