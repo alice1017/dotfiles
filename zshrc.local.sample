@@ -1,0 +1,3 @@
+# Zshrc for local
+
+alias ssh-add='enhanced-ssh-add'
