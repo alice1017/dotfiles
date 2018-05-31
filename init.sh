@@ -51,19 +51,24 @@ log "Copy 'zshrc.local.sample' -> '~/.zshrc.local'"
 cp -v zshrc.local.sample ~/.zshrc.local
 check_exit_code $?
 
-# 3. Clone vundlevim
+# 3. Copy tmux.conf.local.sample
+log "Copy 'tmux.conf.local.sample' -> '~/.tmux.conf.local'"
+cp -v tmux.conf.local.sample ~/.tmux.conf.local
+check_exit_code $?
+
+# 4. Clone vundlevim
 log "Clone VundleVim/Vundle.vim repository to ~/.vim/bundle"
 mkdir -v -p ~/.vim/bundle
 $CLONE https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 check_exit_code $?
 
-# 4. Bundle Install
+# 5. Bundle Install
 log "Run vim, Please exec ':BundleInstall' in vim"
 sleep 3
 vim ~/.vimrc
 check_exit_code $?
 
-# 5. vimproc make
+# 6. vimproc make
 log "Make vimproc runtime"
 cd ~/.vim/bundle/vimproc/
 $MAKE

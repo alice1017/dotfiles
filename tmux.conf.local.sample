@@ -1,0 +1,9 @@
+# Tmux.conf for local
+
+# set default shell
+set-option -g default-shell "/usr/local/bin/zsh"
+
+# run with powerline
+run-shell "powerline-daemon -q"
+source ~/dotfiles/tmux/powerline/powerline-base.conf
+source ~/dotfiles/tmux/powerline/powerline.conf
