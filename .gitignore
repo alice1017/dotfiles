@@ -21,3 +21,6 @@ tags
 
 # bundle plugin directory
 .vim/bundle
+
+# zsh prompts directory
+.zsh/prompts
