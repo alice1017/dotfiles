@@ -44,6 +44,8 @@ set hlsearch
 set laststatus=2
 "  256色表示
 set t_Co=256
+"  tmuxで崩れないために
+set t_ut=
 " 対応する括弧をハイライト
 set showmatch
 " マルチバイトに対応
