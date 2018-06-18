@@ -24,3 +24,6 @@ tags
 
 # zsh prompts directory
 .zsh/prompts
+
+# prompt.zsh uses by prompt-changer
+.zsh/prompt.zsh
