@@ -27,3 +27,6 @@ tags
 
 # prompt.zsh uses by prompt-changer
 .zsh/prompt.zsh
+
+# local script directory
+.zsh/local/
