@@ -79,9 +79,9 @@ set clipboard=unnamed
 " ================================
 
 augroup associate_filetypes
-	autocmd!
-	autocmd BufNewFile,BufRead *.md set filetype=markdown
-	autocmd BufNewFile,BufRead *.less set filetype=less
+    autocmd!
+    autocmd BufNewFile,BufRead *.md set filetype=markdown
+    autocmd BufNewFile,BufRead *.less set filetype=less
     autocmd BufNewFile,BufRead *.scss set filetype=scss.css
     autocmd BufNewFile,BufRead *.jinja2 set filetype=jinja
 augroup END
