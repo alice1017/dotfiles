@@ -42,17 +42,17 @@ CLONE="git clone"
 SUCCESS="\033[1;34m[ SUCCESS ] Dotfile initialization was successful\033[0m\n"
 
 # 1. Copy vimrc.local.sample
-log "Copy 'vimrc.local.sample' -> '~/.vimrc.local'"
+log "Copy vimrc.local.sample"
 cp -v vimrc.local.sample ~/.vimrc.local
 check_exit_code $?
 
 # 2. Copy zshrc.local.sample
-log "Copy 'zshrc.local.sample' -> '~/.zshrc.local'"
+log "Copy zshrc.local.sample"
 cp -v zshrc.local.sample ~/.zshrc.local
 check_exit_code $?
 
 # 3. Copy tmux.conf.local.sample
-log "Copy 'tmux.conf.local.sample' -> '~/.tmux.conf.local'"
+log "Copy tmux.conf.local.sample"
 cp -v tmux.conf.local.sample ~/.tmux.conf.local
 check_exit_code $?
 
@@ -73,6 +73,21 @@ log "Make vimproc runtime"
 cd ~/.vim/bundle/vimproc/
 $MAKE
 check_exit_code $?
+
+# 7. install w3m
+log "Install w3m"
+sudo apt install -y w3m
+check_exit_code $?
+
+# 8. make bin dir
+log "Make bin directory"
+mkdir -pv $HOME/local/bin
+check_exit_code $?
+
+# 9. clone prompt-changer
+log "Clone alice1017/prompt-changer and create symlink"
+$CLONE https://github.com/alice1017/prompt-changer $HOME/prompt-changer
+ln -sv $HOME/prompt-changer/bin/prompt-changer $HOME/local/bin/prompt-changer
 
 # last: print success msg
 printf "$SUCCESS"
