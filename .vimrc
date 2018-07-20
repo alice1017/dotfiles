@@ -5,7 +5,6 @@
 " ================================
 
 let g:neocomplcache_enable_at_startup = 1
-let g:seiya_auto_enable=1
 let g:lightline = {
    \    "colorscheme": "wombat",
    \    "active": {
@@ -137,7 +136,6 @@ Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
-Plugin 'miyakogi/seiya.vim'
 
 call vundle#end()
 filetype plugin indent on
