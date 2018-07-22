@@ -26,7 +26,7 @@ back() {
 
     __check_peco_exists
 
-    result="$(history -i 1 | sort --reverse | peco)"
+    result="$(history -i 0 | sort --reverse | peco)"
 
     command="${result:25}"
     echo "$command"
@@ -34,7 +34,6 @@ back() {
     eval "$command"
     return $?
 }
-
 alias !="back"
 
 # pd
@@ -57,7 +56,7 @@ pd() {
 
 # fd
 #     move current directory to searched directory by `find .`
-#     ignored dirs:: .git .sass-cache
+#     ignored dirs: .git .sass-cache
 fd() {
 
     local dest    # destination directory

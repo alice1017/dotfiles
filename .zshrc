@@ -87,7 +87,9 @@ source $ZDIR/completion.zsh
 source $ZDIR/history.zsh
 
 # FUNCTIONS SECTION
-source $ZDIR/functions/*
+cat $ZDIR/functions/* > /tmp/zsh-functions.zsh
+source /tmp/zsh-functions.zsh
+rm /tmp/zsh-functions.zsh
 
 # PROMPT SECTION
 source $ZDIR/prompt.zsh

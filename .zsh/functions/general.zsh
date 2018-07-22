@@ -1,4 +1,4 @@
-#
+# 
 # GENERAL FUNCTIONS
 # ================
 
@@ -13,6 +13,6 @@ pkill() {
 # user-functions
 #     Show the user functions name & description
 user-functions() {
-    cat $ZDIR/functions/* | grep "^# " | cut -d " " -f 2-
+    cat $ZDIR/functions/* | grep "^#" | cut -d " " -f 2-
     return $?
 }
