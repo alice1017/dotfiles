@@ -36,7 +36,7 @@ back() {
 }
 alias !="back"
 
-# pd
+# pd - project direcoty
 #     move current directory to searched directory contains '.git' dir
 pd() {
 
@@ -54,7 +54,7 @@ pd() {
     eval $command
 }
 
-# fd
+# fd - find directory
 #     move current directory to searched directory by `find .`
 #     ignored dirs: .git .sass-cache
 fd() {
