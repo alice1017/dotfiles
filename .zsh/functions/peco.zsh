@@ -1,16 +1,10 @@
-#
-# FUNCTIONS SECTION
-# ==================================================
+# 
+# PECO FUNCTIONS
+# ================
 
-# pkill: Kill the process of grepped
-pkill() {
-    local target="$1"
-    pgrep "$target" | xargs -iproc kill proc > /dev/null 2>&1
-    return $?
-}
-
-# check_peco_exists: check the peco binary exists or not
-check_peco_exists() {
+## __check_peco_exists
+##     check the peco binary exists or not
+__check_peco_exists() {
 
     which peco > /dev/null 2>&1
 
@@ -23,12 +17,14 @@ check_peco_exists() {
 
 }
 
-# back: search a command from history by peco, and eval it
+# back
+#     search a command from history by peco, and eval it
+#     alias: !
 back() {
     local result
     local command
 
-    check_peco_exists
+    __check_peco_exists
 
     result="$(history -i 1 | sort --reverse | peco)"
 
@@ -41,14 +37,15 @@ back() {
 
 alias !="back"
 
-# pd: move current directory to searched directory contains '.git' dir
+# pd
+#     move current directory to searched directory contains '.git' dir
 pd() {
 
     local result  # search reuslt by peco
     local dest    # destination directory
     local command # eval command
 
-    check_peco_exists
+    __check_peco_exists
 
     result="$(find . -type d -name .git | peco)"
     dest="$(dirname $result)"
@@ -58,14 +55,15 @@ pd() {
     eval $command
 }
 
-# fd: move current directory to searched directory by `find .`
-#     ignored dirs: .git .sass-cache
+# fd
+#     move current directory to searched directory by `find .`
+#     ignored dirs:: .git .sass-cache
 fd() {
 
     local dest    # destination directory
     local command # eval command
 
-    check_peco_exists
+    __check_peco_exists
 
     dest="$(find . -type d \
             | grep -v .git \
