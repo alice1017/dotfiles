@@ -41,14 +41,23 @@ alias !="back"
 #     func name abbreviation: project directory
 pd() {
 
+    local raw     # raw find result string
     local result  # search reuslt by peco
     local dest    # destination directory
     local command # eval command
 
     __check_peco_exists
 
-    result="$(find . -type d -name .git | peco)"
+    raw="$(find . -type d -name .git)"
+
+    if [ "$raw" = "" ];then
+        echo "fatal: project directory doesn't found" 1>&2
+        return 1
+    fi
+
+    result="$(echo $raw | peco)"
     dest="$(dirname $result)"
+
     command="cd $dest"
 
     echo "$dest"
@@ -61,15 +70,22 @@ pd() {
 #     func name abbreviation: find directory
 fd() {
 
+    local raw     # raw find result string
     local dest    # destination directory
     local command # eval command
 
+    raw="$(find . -type d \
+            | grep -v .git \
+            | grep -v .sass-cache)"
+
+    if [ "$raw" = "." ];then
+        echo "fatal: this directory doesn't contains another dir" 1>&2
+        return 1
+    fi
+
     __check_peco_exists
 
-    dest="$(find . -type d \
-            | grep -v .git \
-            | grep -v .sass-cache \
-            | peco)"
+    dest="$(echo $raw | sed 's/ /\n/g' | peco)"
 
     echo "$dest"
     command="cd $dest"
