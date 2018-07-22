@@ -36,8 +36,9 @@ back() {
 }
 alias !="back"
 
-# pd - project direcoty
+# pd
 #     move current directory to searched directory contains '.git' dir
+#     func name abbreviation: project directory
 pd() {
 
     local result  # search reuslt by peco
@@ -54,9 +55,10 @@ pd() {
     eval $command
 }
 
-# fd - find directory
+# fd
 #     move current directory to searched directory by `find .`
 #     ignored dirs: .git .sass-cache
+#     func name abbreviation: find directory
 fd() {
 
     local dest    # destination directory
