@@ -28,7 +28,7 @@ DOTPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 CANDIDATES := $(wildcard .??*)
 EXCLUSIONS := .git .gitignore .config tmux $(wildcard .??*.swp) $(wildcard .??*.swo)
 DOTFILES   := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
-CONFIGS    := $(shell find .config -type d -mindepth 1)
+CONFIGS    := $(shell find .config -type d -mindepth 1 2>/dev/null)
 
 ARROW := '\x1b[33m==>\x1b[0m'
 
