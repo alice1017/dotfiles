@@ -26,8 +26,9 @@
 
 DOTPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 CANDIDATES := $(wildcard .??*)
-EXCLUSIONS := .git .gitignore tmux $(wildcard .??*.swp) $(wildcard .??*.swo)
+EXCLUSIONS := .git .gitignore .config tmux $(wildcard .??*.swp) $(wildcard .??*.swo)
 DOTFILES   := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
+CONFIGS    := $(shell find .config -type d -mindepth 1)
 
 ARROW := '\x1b[33m==>\x1b[0m'
 
@@ -54,6 +55,12 @@ deploy: banner  ## Create the symbolic links to home directory
 	@printf $(ARROW)
 	@echo ' Start to deploy the dotfiles to home directory'
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
+	@echo ""
+	@printf $(ARROW)
+	@echo ' Start to deploy the config files to ~/.config directory'
+	@$(shell mkdir -p $(HOME)/.config)
+	@$(foreach val, $(CONFIGS), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
+
 
 init: banner ## Execute init shell script
 	@bash init.sh
