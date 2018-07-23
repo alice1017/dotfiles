@@ -88,6 +88,7 @@ check_exit_code $?
 log "Clone alice1017/prompt-changer and create symlink"
 $CLONE https://github.com/alice1017/prompt-changer $HOME/prompt-changer
 ln -sv $HOME/prompt-changer/bin/prompt-changer $HOME/local/bin/prompt-changer
+ln -sv $HOME/prompt-changer/prompts/default.zsh $HOME/.zsh/prompt.zsh
 
 # last: print success msg
 printf "$SUCCESS"
