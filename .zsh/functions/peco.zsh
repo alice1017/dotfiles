@@ -70,13 +70,18 @@ pd() {
 #     func name abbreviation: find directory
 fd() {
 
-    local raw     # raw find result string
-    local dest    # destination directory
-    local command # eval command
+    local raw       # raw find result string
+    local dest      # destination directory
+    local -a ignore # array contains ignore directory
+    local command   # eval command
 
-    raw="$(find . -type d \
-            | grep -v .git \
-            | grep -v .sass-cache)"
+    ignore=(".git" "cache")
+    raw="$(find . -type d)"
+
+    for dir in $ignore;do
+        raw="$(echo $raw | xargs -n 1 | grep -v $dir)"
+    done
+
 
     if [ "$raw" = "." ];then
         echo "fatal: this directory doesn't contains another dir" 1>&2
@@ -85,7 +90,7 @@ fd() {
 
     __check_peco_exists
 
-    dest="$(echo $raw | sed 's/ /\n/g' | peco)"
+    dest="$(echo $raw | xargs -n 1 | peco)"
 
     echo "$dest"
     command="cd $dest"
