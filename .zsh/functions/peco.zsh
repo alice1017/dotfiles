@@ -55,7 +55,7 @@ pd() {
         return 1
     fi
 
-    result="$(echo $raw | peco)"
+    result="$(echo $raw | xargs -n 1 | peco)"
     dest="$(dirname $result)"
 
     command="cd $dest"
