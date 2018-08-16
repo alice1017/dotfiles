@@ -55,7 +55,7 @@ pd() {
         return 1
     fi
 
-    result="$(echo $raw | xargs -n 1 | peco)"
+    result="$(echo $raw | sed 's/ /\n/g' | peco)"
     dest="$(dirname $result)"
 
     command="cd $dest"
@@ -79,7 +79,7 @@ fd() {
     raw="$(find . -type d)"
 
     for dir in $ignore;do
-        raw="$(echo $raw | xargs -n 1 | grep -v $dir)"
+        raw="$(echo $raw | sed 's/ /\n/g' | grep -v $dir)"
     done
 
 
@@ -90,7 +90,7 @@ fd() {
 
     __check_peco_exists
 
-    dest="$(echo $raw | xargs -n 1 | peco)"
+    dest="$(echo $raw | sed 's/ /\n/g' | peco)"
 
     echo "$dest"
     command="cd $dest"
