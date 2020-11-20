@@ -68,7 +68,7 @@ pd() {
 #     move current directory to searched directory by `find .`
 #     ignored dirs: .git .sass-cache
 #     func name abbreviation: find directory
-fd() {
+_fd() {
 
     local raw       # raw find result string
     local dest      # destination directory
