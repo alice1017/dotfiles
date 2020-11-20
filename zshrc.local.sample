@@ -1,3 +1,49 @@
 # Zshrc for local
 
-alias ssh-add='enhanced-ssh-add'
+key-add() {
+    eval "$(ssh-agent)"
+    ssh-add $HOME/.ssh/github
+}
+
+key-del() {
+    ssh-agent -k
+}
+
+gitdo() {
+    key-add &&
+    eval "${1}" &&
+    key-del
+}
+
+gitpush() {
+    gitdo "git push origin master"
+}
+
+gitfetch() {
+    gitdo "git fetch origin master"
+}
+
+# eval "$(dircolors -b $HOME/dircolors.jellybeans)"
+# export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+# export PATH="$HOME/.anyenv/envs/nodenv/versions/14.7.0/bin:$PATH"
+# export DENO_INSTALL="/home/alice/.deno"
+# export PATH="$DENO_INSTALL/bin:$PATH"
+# 
+# alias code="/mnt/c/Users/tominaga/AppData/Local/Programs/Microsoft\ VS\ Code/Code.exe"
+# 
+# alias zshrc="vim $HOME/.zshrc"
+# alias zshrclocal="vim $HOME/.zshrc.local"
+# alias home="cd /mnt/c/Users/tominaga"
+# alias reload="source $HOME/.zshrc"
+# 
+# export LAB="/mnt/c/Users/tominaga/lab"
+# 
+# alias ls="$HOME/local/bin/exa -F"
+# alias ll="$HOME/local/bin/exa --long --header"
+# 
+# export DOCKER_HOST="tcp://0.0.0.0:2375"
+# 
+# alias root="cd `git rev-parse --show-toplevel`"
+# 
+# alias grep="grep -n --color=auto"
+# alias grep-files-ts="fd . -E node_modules -E lib --type f -e 'ts' -0 | xargs -0 grep"
