@@ -51,9 +51,27 @@ set showmatch
 " マルチバイトに対応
 set ambiwidth=double
 
-" Indent, Tab, etc
-set tabstop=4
-set shiftwidth=4
+" ================================
+" Indent for each filetype
+" ================================
+augroup indent_settings
+    autocmd!
+    filetype plugin on
+    filetype indent on
+    "sw=shiftwidth, sts=softtabstop, ts=tabstop, et=expandtab
+    autocmd FileType c           setlocal sw=4 sts=4 ts=4 et
+    autocmd FileType html        setlocal sw=4 sts=4 ts=4 et
+    autocmd FileType javascript  setlocal sw=2 sts=2 ts=2 et
+    autocmd Filetype typescript  setlocal sw=2 sts=2 ts=2 et
+    autocmd FileType zsh         setlocal sw=4 sts=4 ts=4 et
+    autocmd FileType python      setlocal sw=4 sts=4 ts=4 et
+    autocmd FileType json        setlocal sw=4 sts=4 ts=4 et
+    autocmd FileType html        setlocal sw=4 sts=4 ts=4 et
+    autocmd FileType css         setlocal sw=4 sts=4 ts=4 et
+    autocmd FileType scss        setlocal sw=4 sts=4 ts=4 et
+    autocmd FileType sass        setlocal sw=4 sts=4 ts=4 et
+augroup END
+
 set autoindent
 set expandtab
 
