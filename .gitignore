@@ -18,6 +18,7 @@ tags
 # End of https://www.gitignore.io/api/vim
 
 # Alice1017 original setting
+.DS_Store
 
 # bundle plugin directory
 .vim/bundle
