@@ -4,100 +4,95 @@
 #  / /\__ \ | | | | | (__
 # /___|___/_| |_|_|  \___|
 #
-# Copyright (c) 2018 Alice1017
+# Copyright (c) 2022 Alice1017
 #
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-# GENERAL SECTION
 
-# Compile
-zcompile ~/.zshrc
-
-# Global variables
-export EDITOR="vim"
-export SHELL="/bin/zsh"
-export TERM="xterm-256color"
-export LANG="ja_JP.UTF-8"
-export ZDIR="$HOME/dotfiles/.zsh"
-
-# Variables
-export sessions=$HOME/.tmux/sessions
-
-# Setting unset options
-unsetopt flow_control     # (shell editor 内で) C-s, C-q を無効にする
-unsetopt no_clobber       # リダイレクトで上書きする事を許可しない。
-
-# Setting options
-#   - about directory
-setopt auto_pushd         # 普通に cd するときにもディレクトリスタックにそのディレクトリを入れる
-setopt pushd_ignore_dups  # ディレクトリスタックに重複する物は古い方を削除
-setopt pushd_silent       # pushd,popdの度にディレクトリスタックの中身を表示しない
-setopt auto_name_dirs     # ~$var でディレクトリにアクセス
-setopt cdable_vars        # cd ~var の ~を省略
-setopt auto_param_slash   # ディレクトリ名の補完で末尾の / を自動的に付加し、次の補完に備える
-setopt path_dirs          # コマンド名に / が含まれているとき PATH 中のサブディレクトリを探す
-
-#  - about job
-setopt long_list_jobs     # 内部コマンド jobs の出力をデフォルトで jobs -L にする
-setopt no_hup             # ログアウト時にバックグラウンドジョブをkillしない
-setopt notify             # バックグラウンドジョブが終了したら(プロンプトの表示を待たずに)すぐに知らせる
-
-#  - another
-setopt no_beep            # コマンド入力エラーでBeepを鳴らさない
-setopt extended_glob      # 拡張グロブを有効にする
-setopt brace_ccl          # ブレース展開機能を有効にする
-setopt equals             # =COMMAND を COMMAND のパス名に展開
-setopt numeric_glob_sort  # 数字を数値と解釈してソートする
-setopt no_flow_control    # C-s/C-q によるフロー制御を使わない
-setopt hash_cmds          # 各コマンドが実行されるときにパスをハッシュに入れる
-setopt magic_equal_subst  # コマンドラインの引数で --PREFIX=/USR などの = 以降でも補完できる
-setopt multios            # 複数のリダイレクトやパイプなど、必要に応じて TEE や CAT の機能が使われる
-setopt short_loops        # FOR, REPEAT, SELECT, IF, FUNCTION などで簡略文法が使えるようになる
-setopt always_last_prompt # カーソル位置は保持したままファイル名一覧を順次その場で表示
-setopt sh_word_split      # クォートされていない変数拡張が行われたあとで、フィールド分割
-setopt rm_star_wait       # rm * を実行する前に確認
-setopt no_unset           # 未定義変数の使用禁止
-
-
-# PATH SECTION
-source $ZDIR/path.zsh
-
-# ALIAS SECTION
-source $ZDIR/alias.zsh
-
-# COMPLETION SECTION
-source $ZDIR/completion.zsh
-
-# HISTORY SECTION
-source $ZDIR/history.zsh
-
-# FUNCTIONS SECTION
-cat $ZDIR/functions/* > /tmp/zsh-functions.zsh
-source /tmp/zsh-functions.zsh
-rm /tmp/zsh-functions.zsh
-
-# PROMPT SECTION
-source $ZDIR/prompt.zsh
-
-# ANOTHER SECTION
-source $ZDIR/another.zsh
-
-# Local setting
-if [ -e "$HOME/.zshrc.local" ];then
-    source ~/.zshrc.local
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
+
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+    git
+    zsh-autosuggestions
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+source $HOME/.zsh/new_zshrc.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
